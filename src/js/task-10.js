@@ -6,7 +6,7 @@ const amountEl = document.querySelector('#controls input')
 
 
 function createBoxes(amount) {
-  for(var i = 0; i < amount; i+= 1) {
+  for(let i = 0; i < amount; i+= 1) {
     let elem = document.createElement('div');
     
     elem.style.width = 30 + (10 * i)+'px';
