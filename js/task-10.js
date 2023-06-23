@@ -2,22 +2,25 @@
 const creatBtn = document.querySelector('button[data-create]');
 const destroyBtn = document.querySelector('button[data-destroy]');
 const boxesEl= document.querySelector('#boxes');
-const amountEl = document.querySelector('#controls input')
 
+const amountEl = document.querySelector('#controls input')
 
 function createBoxes(amount) {
 
-  for(let i = 0; i < amount; i+= 1) {
-    let elem = document.createElement('div');
-    
-    elem.style.width = 30 + (10 * i)+'px';
-    elem.style.height = 30 + (10 * i)+'px';
-    elem.style.backgroundColor = getRandomHexColor();
-    boxesEl.append(elem);
+  const boxSize = 30; 
+  const sizeIncrement = 10; 
 
-  }
+  const boxes = Array.from({ length: amount }).map((_, index) => {
+    const box = document.createElement('div');
+    box.style.width = box.style.height = `${boxSize + index * sizeIncrement}px`;
+    box.style.backgroundColor = getRandomHexColor()
 
+    return box;
+  });
+
+  boxesEl.append(...boxes);
 }
+
 creatBtn.addEventListener('click', getAmount);
 
  function getAmount() {
